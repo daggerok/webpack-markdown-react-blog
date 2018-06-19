@@ -1,8 +1,12 @@
+<!--
+
 ---
 title: Another Article'
 metadata:
   ololo: trolololo
 ---
+
+-->
 
 ## another article
 
