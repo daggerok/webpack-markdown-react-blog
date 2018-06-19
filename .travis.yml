@@ -1,0 +1,41 @@
+apt:
+  update: true
+  packages:
+  - wget
+  - libappindicator1
+  - fonts-liberation
+
+install: true
+before_script:
+- export CHROME_BIN=/usr/bin/google-chrome
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+- sudo dpkg -i google-chrome*.deb >/dev/null 2>&1
+
+language: node_js
+node_js: lts/*
+
+script:
+- npm i
+- npm run dev
+- npm run build
+
+env:
+  global:
+  - TERM=dumb
+  # GITHUB_TOKEN:
+
+before_deploy:
+- cd $root
+- npm run predeploy
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: "$GITHUB_TOKEN"
+  keep-history: true
+  on:
+    branch: master
+  local-dir: dist
+  target_branch: gh-pages
