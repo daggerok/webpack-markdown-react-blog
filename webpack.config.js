@@ -1,6 +1,3 @@
-const { resolve } = require('path');
-const dist = resolve(__dirname, 'dist');
-
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -12,6 +9,8 @@ const BrotliPlugin = require('brotli-webpack-plugin');
 const { BaseHrefWebpackPlugin: BaseHrefPlugin } = require('base-href-webpack-plugin');
 const ImageMinPlugin = require('imagemin-webpack-plugin').default;
 
+const { resolve } = require('path');
+const dist = resolve(__dirname, 'dist');
 const safety = env => env || process.env || {};
 const mode = env => safety(env).NODE_ENV || 'production';
 const isProduction = env => 'production' === mode(env);
