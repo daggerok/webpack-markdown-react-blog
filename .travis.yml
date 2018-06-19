@@ -1,17 +1,23 @@
-apt:
-  update: true
-  packages:
-  - wget
-  - libappindicator1
-  - fonts-liberation
+addons:
+  apt:
+    update: true
+    sources:
+    - google-chrome
+    packages:
+    - wget
+    - libappindicator1
+    - fonts-liberation
+    - google-chrome-stable
 
 install: true
 before_script:
+## setting the path for phantom.js 2.0.0
+#- export PATH=/usr/local/phantomjs-2.0.0/bin:$PATH
 - export CHROME_BIN=/usr/bin/google-chrome
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
-- wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-- sudo dpkg -i google-chrome*.deb >/dev/null 2>&1
+#- wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+#- sudo dpkg -i google-chrome*.deb >/dev/null 2>&1
 
 language: node_js
 node_js: lts/*
@@ -20,6 +26,12 @@ script:
 - npm i
 - npm run dev
 - npm run build
+
+cache:
+  npm: true
+  yarn: true
+  directories:
+  - node_modules
 
 env:
   global:
