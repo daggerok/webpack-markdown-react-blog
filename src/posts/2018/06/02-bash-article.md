@@ -1,14 +1,16 @@
 <!--
 
 ---
-title: Another Article'
+title: Bash Article'
 metadata:
   ololo: trolololo
 ---
 
 -->
 
-## another article
+## BASH article
+
+bash, hassh, rehash, hhhh!!!!11111oneoneone
 
 ```bash
 function ololo {
