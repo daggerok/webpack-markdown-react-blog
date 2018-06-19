@@ -27,7 +27,7 @@ const Index = () => <div onClick={dynamicPostsLoad} className='container'>
   <Posts/>
 </div>;
 
-const Routes = () => <BrowserRouter>
+const Routes = () => <BrowserRouter basename={process.env.BASE_HREF || ''}>
   <div>
     <div className='nav'>
       <Link to='/'>Home</Link>

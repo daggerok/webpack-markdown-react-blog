@@ -192,6 +192,7 @@ module.exports = env => ({
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(mode(env)),
+        BASE_HREF: JSON.stringify(publicPath(env)),
       },
     }),
     isProduction(env) ? new CompressionPlugin({ algorithm: 'gzip' }) : undefined,
